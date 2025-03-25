@@ -35,6 +35,11 @@
     cd hedge-it/src
     python -m hedge_it -pak=<API_KWY>
     ```
+  
+5. **Viewing Dashboard**  
+To view the Streamlit dashboard, ensure the application is running and navigate to the following URL in your browser:  
+[http://localhost:8501](http://localhost:8501). If 8501 is taken it will be available on next available port (check log for exact port).
+Allow a minute or two to load the data.
 
 ## Parameters
 
