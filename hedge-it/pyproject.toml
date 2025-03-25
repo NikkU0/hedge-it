@@ -1,0 +1,91 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "hedge-it"
+dynamic = ["version"]
+description = 'Dashboard to monitor equal-weighted index of top 100 market cap stocks'
+readme = "README.md"
+requires-python = ">=3.10,<3.12"
+license = "MIT"
+keywords = []
+authors = [
+    { name = "Sudhanshu Yadav", email = "sudhanshu.yadav.321@gmail.com" },
+]
+classifiers = [
+  "Development Status :: 4 - Beta",
+   "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: Implementation :: CPython",
+  "Programming Language :: Python :: Implementation :: PyPy",
+]
+dependencies = [
+  "streamlit~=1.43.2",
+  "duckdb~=1.2.1",
+  "pandas~=2.2.3",
+  "numpy~=2.2.4",
+  "yfinance~=0.2.55",
+  "polygon~=1.2.6",
+  "requests-cache~=1.2.1",
+  "requests-ratelimiter",
+  "pyrate-limiter",
+  "plotly",
+  "fpdf"
+]
+
+[project.urls]
+Documentation = "https://github.com/NikkU0/hedge-it?tab=readme-ov-file"
+Issues = "https://github.com/NikkU0/hedge-it/issues"
+Source = "https://github.com/NikkU0/hedge-it"
+
+[tool.hatch.version]
+path = "src/hedge_it/__about__.py"
+
+[tool.hatch.envs.default]
+dependencies = [
+  "coverage[toml]>=6.5",
+  "pytest",
+  "jupyter",
+]
+[tool.hatch.envs.default.scripts]
+test = "pytest {args:tests}"
+test-cov = "coverage run -m pytest {args:tests}"
+cov-report = [
+  "- coverage combine",
+  "coverage report",
+]
+cov = [
+  "test-cov",
+  "cov-report",
+]
+
+[[tool.hatch.envs.all.matrix]]
+python = ["3.10", "3.11", "3.12"]
+
+[tool.hatch.envs.types]
+dependencies = [
+  "mypy>=1.0.0",
+]
+[tool.hatch.envs.types.scripts]
+check = "mypy --install-types --non-interactive {args:src/hedge_it tests}"
+
+[tool.coverage.run]
+source_pkgs = ["hedge_it", "tests"]
+branch = true
+parallel = true
+omit = [
+  "src/hedge_it/__about__.py",
+]
+
+[tool.coverage.paths]
+hedge_it = ["src/hedge_it", "*/hedge-it/src/hedge_it"]
+tests = ["tests", "*/hedge-it/tests"]
+
+[tool.coverage.report]
+exclude_lines = [
+  "no cov",
+  "if __name__ == .__main__.:",
+  "if TYPE_CHECKING:",
+]

@@ -33,7 +33,7 @@
     Once inside the virtual environment, execute the following command:  
     ```bash
     cd hedge-it/src
-    python -m hedge_it -pak=<API_KWY> -sl=100
+    python -m hedge_it -pak=<API_KWY>
     ```
 
 ## Parameters
@@ -43,7 +43,7 @@
 
 - **`-sl` (Stock Count)**[Optional]:  
   Specifies the number of stocks to fetch historical data and outstanding shares for. This is required due to the rate limiter. Although caching is enabled for yfinance api.
-  Default value is `100`. Be warned using higher value can lead to failure.
+  Default value is `2000`. Be warned using higher value can lead to failure.
 
 - **`-l` (Log Level)**[Optional]:  
   Log level of application. By Default it `INFO`. Can be used
@@ -70,7 +70,7 @@
     Once inside the virtual environment, execute the following command:  
     ```bash
     cd hedge-it/src
-    python -m hedge_it -pak=<API_KWY> -sl=100
+    python -m hedge_it -pak=<API_KWY>
     ```
 
 ## Additional Notes
@@ -81,5 +81,5 @@
 
 - **Example Command**:  
   ```bash
-  python -m hedge_it -pak=WUC7lMzSiLo9wdWAuM -sl=100
+  python -m hedge_it -pak=WUC7lMzSiLo9wdWAuM -sl=1000
   ```

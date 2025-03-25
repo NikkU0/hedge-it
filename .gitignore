@@ -1,0 +1,11 @@
+*.iml
+.*
+.idea
+target
+__pycache__
+*.duckdb
+*.cache
+dist
+*.log
+stock_composition.*
+html
