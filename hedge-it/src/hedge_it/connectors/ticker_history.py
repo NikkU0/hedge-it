@@ -39,6 +39,8 @@ def ticker_by_exchange(poly_ref_client, *exchanges):
             log.info(
                 f"Response Status: {response.get('status')},Count :{response.get('count')} Next URL: {response.get('next_url')}"
             )
+            if response.get('status') == 'ERROR':
+                log.error(f"Error fetching tickers for exchange {exchange}: {response.get('error')}")
             filtered_tickers = [
                 i
                 for i in response.get("results", [])
